@@ -14,4 +14,14 @@ public class Name
     public String toString() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Name)
+        {
+            Name name = (Name) obj;
+            return name.name.equals(this.name);
+        }
+        return false;
+    }
 }

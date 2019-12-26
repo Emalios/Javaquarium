@@ -1,6 +1,7 @@
 package fr.emalios.javaquarium;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SeaweedHandler
@@ -13,9 +14,11 @@ public class SeaweedHandler
         this.seaweeds = new ArrayList<>();
     }
 
-    public void addSeaweed()
+    public void addSeaweed(int number)
     {
-        this.seaweeds.add(new Seaweed());
+        for (int i = 0; i < number; i++) {
+            this.seaweeds.add(new Seaweed());
+        }
     }
 
     @Override
