@@ -7,22 +7,20 @@ import java.util.List;
 public class SeaweedHandler
 {
 
-    private List<Seaweed> seaweeds;
+    private int seaweeds;
 
     public SeaweedHandler()
     {
-        this.seaweeds = new ArrayList<>();
+        this.seaweeds = 0;
     }
 
     public void addSeaweed(int number)
     {
-        for (int i = 0; i < number; i++) {
-            this.seaweeds.add(new Seaweed());
-        }
+        this.seaweeds += number;
     }
 
     @Override
     public String toString() {
-        return this.seaweeds.size() + " algues";
+        return this.seaweeds + " algues";
     }
 }

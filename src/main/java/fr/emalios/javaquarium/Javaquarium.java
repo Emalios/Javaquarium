@@ -13,7 +13,8 @@ public class Javaquarium
         Aquarium aquarium = new Aquarium();
         aquarium.addSeaweed(10);
         aquarium.addFish(new Fish("Hugo", Gender.MALE, FishSpecies.MEROU));
-        aquarium.addFish(new Fish("Tom", Gender.MALE, FishSpecies.MEROU));
+        aquarium.addFish(new Fish("Tom", Gender.MALE, FishSpecies.BAR));
+        aquarium.addFish(new Fish("TRUC", Gender.FEMALE, FishSpecies.BAR));
         aquarium.addTurn();
     }
 

@@ -20,6 +20,7 @@ public class Aquarium
 
     public void addTurn()
     {
+        fishHandler.addTurn(this);
         System.out.println(this);
     }
 

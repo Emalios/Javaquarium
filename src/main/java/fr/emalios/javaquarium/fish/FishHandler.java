@@ -1,8 +1,10 @@
 package fr.emalios.javaquarium.fish;
 
+import fr.emalios.javaquarium.Aquarium;
 import fr.emalios.javaquarium.fish.Fish;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -36,10 +38,10 @@ public class FishHandler
     {
         while(true)
         {
-            Fish fishtoEat = getFishToEat();
-            if(!(fish.equals(fishtoEat)))
+            Fish fishToEat = getFishToEat();
+            if(!(fish.equals(fishToEat)))
             {
-                killFish(fishtoEat);
+                killFish(fishToEat);
                 break;
             }
         }
@@ -55,5 +57,16 @@ public class FishHandler
         this.random = new Random();
         int random = this.random.nextInt(this.fishs.size());
         return this.fishs.get(random);
+    }
+
+    public void addTurn(Aquarium aquarium)
+    {
+        List<Fish> copy = new ArrayList<>(this.fishs);
+        copy.forEach(fish -> {
+            if (this.fishs.contains(fish)
+            ) {
+                fish.eat(aquarium);
+            }
+        });
     }
 }
