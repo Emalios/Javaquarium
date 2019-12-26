@@ -2,7 +2,6 @@ package fr.emalios.javaquarium.utils;
 
 public class Name
 {
-
     private String name;
 
     public Name(String name)

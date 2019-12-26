@@ -2,9 +2,7 @@ package fr.emalios.javaquarium;
 
 import fr.emalios.javaquarium.fish.Fish;
 import fr.emalios.javaquarium.fish.FishHandler;
-import fr.emalios.javaquarium.fish.FishType;
-import fr.emalios.javaquarium.utils.Gender;
-import fr.emalios.javaquarium.utils.Name;
+import fr.emalios.javaquarium.seaweed.SeaweedHandler;
 
 public class Aquarium
 {
@@ -20,6 +18,7 @@ public class Aquarium
 
     public void addTurn()
     {
+        seaweedHandler.addTurn();
         fishHandler.addTurn(this);
         System.out.println(this);
     }
@@ -36,7 +35,7 @@ public class Aquarium
 
     public void eatSeaweed()
     {
-        this.seaweedHandler.addSeaweed(-1);
+        this.seaweedHandler.killSeaweed();
     }
 
     @Override
@@ -46,5 +45,13 @@ public class Aquarium
 
     public void eatFish(Fish fish) {
         fishHandler.eatFish(fish);
+    }
+
+    public boolean hasEnoughSeaweed() {
+        return this.seaweedHandler.hasEnough();
+    }
+
+    public boolean hasEnoughFish() {
+        return this.fishHandler.hasEnough();
     }
 }

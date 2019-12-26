@@ -1,6 +1,7 @@
 package fr.emalios.javaquarium.fish;
 
 import fr.emalios.javaquarium.Aquarium;
+import fr.emalios.javaquarium.LivingEntity;
 import fr.emalios.javaquarium.fish.Fish;
 
 import java.util.ArrayList;
@@ -39,17 +40,16 @@ public class FishHandler
         while(true)
         {
             Fish fishToEat = getFishToEat();
-            if(!(fish.equals(fishToEat)))
+            if(fish.canEat(fishToEat))
             {
-                killFish(fishToEat);
+                fish.damageFish(fishToEat);
+                if(fishToEat.isDead())
+                {
+                    this.fishs.remove(fishToEat);
+                }
                 break;
             }
         }
-    }
-
-    private void killFish(Fish fish)
-    {
-        this.fishs.remove(fish);
     }
 
     private Fish getFishToEat()
@@ -61,12 +61,17 @@ public class FishHandler
 
     public void addTurn(Aquarium aquarium)
     {
+        this.fishs.forEach(LivingEntity::addTurn);
         List<Fish> copy = new ArrayList<>(this.fishs);
         copy.forEach(fish -> {
-            if (this.fishs.contains(fish)
-            ) {
+            if (this.fishs.contains(fish) && fish.isHungry())
+            {
                 fish.eat(aquarium);
             }
         });
+    }
+
+    public boolean hasEnough() {
+        return this.fishs.size() >= 2;
     }
 }
